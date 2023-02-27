@@ -1,4 +1,5 @@
 <script lang="ts">
+    import type { ResidencyType } from '../types/HouseType'
     import { Chart as ChartJS, LineElement, PointElement, CategoryScale, LinearScale, Filler } from 'chart.js'
     import { Line } from 'vue-chartjs'
 
@@ -26,7 +27,7 @@
                             borderWidth: 2,
                             fill: true,
                             backgroundColor: 'rgba(14, 156, 255, 0.2)',
-                            data: [2, 4, 10, 5, 5, 2, 1]
+                            data: this.residency.map((item: ResidencyType) => item.birds) //[2, 4, 10, 5, 5, 2, 1]
                         },
                         {
                             label: 'Data Two',
@@ -34,7 +35,7 @@
                             borderWidth: 2,
                             fill: true,
                             backgroundColor: 'rgba(116, 79, 153, 0.2)',
-                            data: [2, 1, 2, 4, 5, 6, 8]
+                            data: this.residency.map((item: ResidencyType) => item.eggs)
                         }
                     ]
                 },

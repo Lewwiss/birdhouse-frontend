@@ -2,6 +2,7 @@
   import type { HouseType } from '../types/HouseType'
   import Sidebar from '../components/Sidebar.vue'
   import House from '../components/House.vue'
+  import HouseSkeleton from '../components/skeletons/HouseSkeleton.vue'
   import Pagination from '../components/Pagination.vue'
 
   export default {
@@ -9,6 +10,7 @@
     components: {
       Sidebar,
       House,
+      HouseSkeleton,
       Pagination
     },
     data() {
@@ -33,7 +35,9 @@
       <div class="flex grow items-start w-full p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" v-if="houses.length > 0">
         <House v-for="house in houses" :house="house" />
       </div>
-      <div v-else class="flex grow items-start w-full p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" />
+      <div v-else class="flex grow items-start w-full p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        <HouseSkeleton />
+      </div>
       <Pagination />
     </div>
   </div>

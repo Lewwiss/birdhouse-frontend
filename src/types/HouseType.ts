@@ -8,7 +8,7 @@ export interface HouseType {
     updated: Number
 }
 
-interface ResidencyType {
+export interface ResidencyType {
     date: any,
     birds: Number,
     eggs: Number

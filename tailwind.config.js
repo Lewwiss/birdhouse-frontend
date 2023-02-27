@@ -14,6 +14,7 @@ module.exports = {
         "shockbyte": {
           "lighter": "rgba(255, 255, 255, 0.4)",
           "light": "rgba(255, 255, 255, 0.2)",
+          "skeleton": "#25272e",
           "dark": "#1E1F25",
           "darker": "#131517",
           "primary": "#5051F9",
