@@ -1,40 +1,63 @@
-# birdhouse-frontend
+<img src="./.github/showcase.png" />
 
-This template should help get you started developing with Vue 3 in Vite.
+# Birdhouse Frontend (Shockbyte)
+> Built using [VueJS](https://vuejs.org/) and [Typescript](https://www.typescriptlang.org/)
 
-## Recommended IDE Setup
+Hosted version here [birdhouse-frontend.vercel.app](https://www.birdhouse-frontend.vercel.app/)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Setup & Routing
 
-## Type Support for `.vue` Imports in TS
+I've tried to keep routing as simple and as minimal as possible. I've kept the "Graph" and "Overview" components under the same route as the data will already exist, resulting in less API calls.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```typescript
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: HomeView
+  },
+  {
+    path: '/houses',
+    name: 'houses',
+    component: HousesView
+  },
+  {
+    path: '/house/:id',
+    name: 'house',
+    component: HouseView
+  }
+];
 ```
 
-### Compile and Hot-Reload for Development
+## Data Fetching
 
-```sh
-npm run dev
+Within each view component (HomeView, HousesView & HouseView) I provided a mounted function to trigger a request to the backend API. This data is then stored in state and can be passed down throughout the child components as props.
+
+```typescript
+mounted() {
+    fetch("https://birdhouse-backend.vercel.app/house")
+        .then(res => res.json())
+        .then(data => this.houses = data)
+        .catch(err => console.log(err)
+    );
+}
 ```
 
-### Type-Check, Compile and Minify for Production
+## Components
 
-```sh
-npm run build
-```
+I've created the following components to reuse throughout the web application. Within the Graph component I've utilized [ChartJS](https://www.chartjs.org/) to simplify the data.
+
+ - Sidebar.vue
+ - House.vue
+ - Header.vue
+ - Residency.vue
+ - Graph.vue
+ - Pagination.vue
+
+## Skeleton Components
+
+As we await the request from the API. I've created copies of some components to act as a skeleton to represent loading data.
+
+ - HouseSkeleton.vue
+ - HeaderSkeleton.vue
+ - ResidencySkeleton.vue
