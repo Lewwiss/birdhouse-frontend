@@ -3,7 +3,7 @@
 # Birdhouse Frontend (Shockbyte)
 > Built using [VueJS](https://vuejs.org/) and [Typescript](https://www.typescriptlang.org/)
 
-Hosted version here [birdhouse-frontend.vercel.app](https://www.birdhouse-frontend.vercel.app/)
+Hosted version here [birdhouse-frontend.vercel.app](https://birdhouse-frontend.vercel.app/)
 
 ## Setup & Routing
 
