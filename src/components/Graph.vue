@@ -11,6 +11,8 @@
         Filler
     );
 
+    const weekDays: String[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
     export default {
         props: ['residency'],
         name: 'Graph',
@@ -19,7 +21,7 @@
             return {
                 type: 'line',
                 data: {
-                    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                    labels: this.residency.map((item: ResidencyType) => weekDays[new Date(item.date).getDay()]),
                     datasets: [
                         {
                             label: 'Data One',

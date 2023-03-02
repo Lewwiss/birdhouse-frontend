@@ -24,6 +24,13 @@
         .then(data => this.houses = data)
         .catch(err => console.log(err)
       )
+    },
+    methods: {
+      getItemCount() {
+        const itemsPerPage = 10;
+        if (this.houses.length <= itemsPerPage) return 1;
+        else return this.houses.length / itemsPerPage;
+      }
     }
   }
 </script>
@@ -38,7 +45,7 @@
       <div v-else class="flex grow items-start w-full p-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
         <HouseSkeleton />
       </div>
-      <Pagination />
+      <Pagination v-if="houses.length > 0" :itemCount="getItemCount()" />
     </div>
   </div>
 </template>
